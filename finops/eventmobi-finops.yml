@@ -1,0 +1,97 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: EventMobi
+providerId: eventmobi
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Events
+- Event Management
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of EventMobi spend. EventMobi is licensed as an event management
+  platform, billed per event or per year rather than as a metered API. The
+  Unified API carries no separate per-call charge - it is a capability of an
+  Organizer account - so the cost drivers are the platform plan itself plus
+  event-scoped add-ons (badge hardware rental, pre-printed badges, streaming and
+  video storage packs) and any custom/enterprise agreement. Cost predictability
+  is high because charges are packaged and event-scoped rather than
+  usage-metered on API calls.
+notes: >-
+  List prices referenced here are indicative and not reconciled; confirm on
+  eventmobi.com/pricing or with EventMobi sales. There is no public evidence of
+  usage-based API metering, so API spend is effectively bundled into the plan.
+sources:
+- https://www.eventmobi.com/pricing/
+- https://developers.eventmobi.com/latest/
+- https://www.getapp.com/customer-management-software/a/eventmobi/pricing/
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: EventMobi
+serviceCategory: Event Management
+billingModel:
+  pricingCategory: Subscription / Per-Event
+  billingFrequency: Per Event or Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: EventMobi Platform
+  ServiceCategory: Event Management
+  ProviderName: EventMobi
+  PublisherName: EventMobi
+  InvoiceIssuerName: EventMobi
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: per_event_license
+  description: Single-event platform license (module bundles priced separately).
+  unit: events
+  aggregation: sum
+  dimensions:
+  - account
+  - event
+- name: annual_subscription
+  description: Annual unlimited-events subscription.
+  unit: subscriptions
+  aggregation: sum
+  dimensions:
+  - account
+- name: badge_hardware
+  description: Badge printer/iPad hardware rental packages, per rental period.
+  unit: rentals
+  aggregation: sum
+  dimensions:
+  - account
+  - event
+- name: streaming_storage
+  description: Streaming and video storage add-on packs, per event.
+  unit: packs
+  aggregation: sum
+  dimensions:
+  - account
+  - event
+principles:
+- name: Visibility
+  description: Track spend per event and per annual subscription; itemize add-ons (badges, hardware, streaming) separately from the base plan.
+- name: Allocation
+  description: Map each per-event license to the specific event/program and cost center it supports.
+- name: Optimization
+  description: For multi-event programs, compare stacked per-event licenses against the annual unlimited-events plan; scope add-ons to the events that need them.
+- name: Accountability
+  description: Assign an owner per event; review add-on charges against the base plan before each event and renewal.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

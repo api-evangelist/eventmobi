@@ -1,0 +1,132 @@
+aid: eventmobi
+url: https://raw.githubusercontent.com/api-evangelist/eventmobi/refs/heads/main/apis.yml
+name: EventMobi
+kind: company
+description: >-
+  EventMobi is an event management platform for in-person, virtual, and hybrid
+  events - event apps, registration and ticketing, event websites, badges and
+  check-in, and live engagement - all configured through its Experience Manager.
+  EventMobi exposes a documented public Unified API (UAPI) that lets organizers
+  programmatically read and manage the data behind an event: events, people
+  (attendees, speakers, and other participants), sessions, companies (sponsors
+  and exhibitors), and groups. Access is gated by an EventMobi Organizer
+  account - API keys are generated inside Experience Manager and carry the same
+  access rights as the Organizer they belong to - so the API is available to
+  paying customers rather than through open self-service signup.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Events
+- Event Management
+- Event Apps
+- Attendees
+- Sessions
+- Registration
+created: '2026-07-05'
+modified: '2026-07-05'
+specificationVersion: '0.19'
+apis:
+- aid: eventmobi:eventmobi-events-api
+  name: EventMobi Events API
+  tags:
+  - Events
+  - Experience Manager
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.eventmobi.com/latest/
+  baseURL: https://uapi.eventmobi.com
+  properties:
+  - url: https://developers.eventmobi.com/latest/
+    type: Documentation
+  - url: https://developers.eventmobi.com/docs/uapi-public/YXBpOjI5Njc2MDM1-event-mobi-api
+    type: APIReference
+  description: >-
+    Read and update the events an Organizer manages. Confirmed request patterns
+    include GET and PATCH on the events collection and nested resources such as
+    /events/{event_id}/images/. Each API key is scoped to the Organizer that
+    generated it. Full CRUD verb/path coverage is endpointsModeled - the public
+    reference is served from a gated developer portal and the complete surface
+    was not machine-extractable at review time.
+- aid: eventmobi:eventmobi-people-api
+  name: EventMobi People API
+  tags:
+  - People
+  - Attendees
+  - Speakers
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.eventmobi.com/latest/
+  baseURL: https://uapi.eventmobi.com
+  properties:
+  - url: https://developers.eventmobi.com/latest/
+    type: Documentation
+  description: >-
+    Manage the people associated with an event - attendees, speakers, and other
+    participants - including their profile fields and visibility, which are
+    controlled by authorization level. People are organized into groups (see the
+    Groups API). Endpoints are nested under an event. Exact verb/path coverage is
+    endpointsModeled.
+- aid: eventmobi:eventmobi-sessions-api
+  name: EventMobi Sessions API
+  tags:
+  - Sessions
+  - Agenda
+  - Schedule
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.eventmobi.com/latest/
+  baseURL: https://uapi.eventmobi.com
+  properties:
+  - url: https://developers.eventmobi.com/latest/
+    type: Documentation
+  description: >-
+    Manage an event's agenda sessions - scheduling, session roles, and the
+    speakers and content attached to each session. Endpoints are nested under an
+    event. Exact verb/path coverage is endpointsModeled.
+- aid: eventmobi:eventmobi-companies-api
+  name: EventMobi Companies API
+  tags:
+  - Companies
+  - Sponsors
+  - Exhibitors
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.eventmobi.com/latest/
+  baseURL: https://uapi.eventmobi.com
+  properties:
+  - url: https://developers.eventmobi.com/latest/
+    type: Documentation
+  description: >-
+    Manage the companies shown in an event - sponsors, exhibitors, and vendors.
+    Confirmed request pattern includes the nested collection
+    /events/{event_id}/companies/. Full verb/path coverage is endpointsModeled.
+- aid: eventmobi:eventmobi-groups-api
+  name: EventMobi Groups API
+  tags:
+  - Groups
+  - Segmentation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developers.eventmobi.com/latest/
+  baseURL: https://uapi.eventmobi.com
+  properties:
+  - url: https://developers.eventmobi.com/latest/
+    type: Documentation
+  description: >-
+    Create and manage people groups used to categorize attendees within an
+    event; custom groups carry the "custom" type. Endpoints are nested under an
+    event. Exact verb/path coverage is endpointsModeled.
+common:
+- type: GitHubOrganization
+  url: https://github.com/EventMobi
+- type: LinkedIn
+  url: https://www.linkedin.com/company/eventmobi
+- type: Website
+  url: https://www.eventmobi.com
+- type: Documentation
+  url: https://developers.eventmobi.com/latest/
+- type: Plans
+  url: plans/eventmobi-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/eventmobi-rate-limits.yml
+- type: FinOps
+  url: finops/eventmobi-finops.yml
+- url: https://www.eventmobi.com/blog/
+  type: Blog
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

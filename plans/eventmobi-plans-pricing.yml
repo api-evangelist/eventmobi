@@ -1,0 +1,112 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: EventMobi
+providerId: eventmobi
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Events
+- Event Management
+- Event Apps
+- Plans
+- Pricing
+description: >-
+  EventMobi is sold as an event management platform, not as a metered API
+  product. Pricing is packaged per event or per year, and the Unified API is
+  included as a capability of an Organizer account rather than billed
+  separately - there is no published per-call API price. EventMobi publicly
+  lists a per-event plan and an annual unlimited-events plan, and directs larger
+  events, higher attendee volumes, and custom requirements to sales. The figures
+  below are indicative list prices seen in EventMobi's public pricing and
+  third-party listings and are NOT reconciled - confirm current pricing with
+  EventMobi.
+notes: >-
+  API access requires an EventMobi Organizer account; API keys are generated in
+  Experience Manager and inherit the Organizer's access. Add-ons seen in public
+  listings (badge hardware rental, pre-printed badges, streaming/storage packs)
+  are separate from the core plans. Verify all numbers on eventmobi.com/pricing
+  during reconciliation.
+sources:
+- https://www.eventmobi.com/pricing/
+- https://developers.eventmobi.com/latest/
+- https://www.getapp.com/customer-management-software/a/eventmobi/pricing/
+- https://www.capterra.com/p/122146/EventMobi/pricing/
+plans:
+- id: eventmobi-per-event
+  name: Per Event
+  type: paid
+  description: >-
+    Single-event license including onboarding and standard technical support.
+    Public listings indicate a starting price around 3000 USD per event
+    (module bundles such as the Event App or Registration platform are listed
+    separately). Includes access to Experience Manager and, therefore, the
+    Unified API for that Organizer.
+  entries:
+  - label: Per Event License
+    name: per_event_license
+    type: flat
+    metric: event
+    limit: 1
+    timeFrame: event
+    geo: global
+    unit: 1
+    price: from ~3000 USD per event (indicative, not reconciled)
+    userMultiplied: false
+  elements:
+  - name: Event App
+  - name: Experience Manager
+  - name: Unified API Access
+  - name: Onboarding
+  - name: Standard Technical Support
+- id: eventmobi-per-year
+  name: Per Year (Unlimited Events)
+  type: paid
+  description: >-
+    Annual subscription covering unlimited events, with a dedicated Event
+    Success Manager, collaborative build sessions, and quarterly business
+    reviews. Public listings indicate a starting price around 8900 USD per year.
+    Includes Experience Manager and Unified API access.
+  entries:
+  - label: Annual Subscription
+    name: annual_subscription
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: from ~8900 USD per year (indicative, not reconciled)
+    userMultiplied: false
+  elements:
+  - name: Unlimited Events
+  - name: Experience Manager
+  - name: Unified API Access
+  - name: Dedicated Event Success Manager
+  - name: Quarterly Business Reviews
+- id: eventmobi-custom
+  name: Custom / Enterprise
+  type: enterprise
+  description: >-
+    Custom pricing for large events (public materials cite custom pricing for
+    organizations with over 10000 attendees), multi-event programs, and unique
+    requirements. Contact EventMobi sales.
+  entries:
+  - label: Custom Agreement
+    name: custom_agreement
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume and Terms
+  - name: High Attendee Volume
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

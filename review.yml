@@ -1,0 +1,90 @@
+aid: eventmobi
+name: EventMobi
+review:
+  question: Does EventMobi expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-05'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. EventMobi's documented public surface is
+    the Unified API (UAPI), a request/response REST API over HTTPS at
+    https://uapi.eventmobi.com, authenticated with an API key generated in
+    Experience Manager. The documentation describes REST resources (events,
+    people, sessions, companies, groups), pagination, sorting, image upload, and
+    webhooks - server-to-endpoint HTTP callbacks - but no server-push transport
+    (WebSocket or SSE) on EventMobi's own public API to model. Live in-app
+    engagement features (polls, chat, Q&A) are delivered inside EventMobi's own
+    event apps and are not exposed as a documented public WebSocket endpoint.
+findings:
+  summary: |
+    EventMobi does not publish a documented public WebSocket API. EventMobi is an
+    event management platform (event apps, registration/ticketing, event
+    websites, badging/check-in, live engagement) configured through its
+    Experience Manager. Its documented developer surface is the Unified API
+    (UAPI) at https://uapi.eventmobi.com - a REST API over HTTPS. Authentication
+    is via an API key that is generated inside Experience Manager and is scoped
+    to a single Organizer, carrying the same access rights as that Organizer. The
+    API exposes events and event-scoped resources (people/attendees, sessions,
+    companies, groups), supports pagination and sorting (max 1000 items per page
+    unless otherwise stated), image upload to a temporary URL via PUT, search and
+    filtering, and webhooks. Two versions are documented (UAPI v3 and the current
+    UAPI v4). No realtime, bidirectional, or streaming WebSocket (ws:// or wss://)
+    endpoint is documented on EventMobi's own public API.
+  accessModel: |
+    The API is real and publicly documented but access-gated. There is no open
+    self-service API signup - you need an EventMobi Organizer account (a paid
+    plan; EventMobi lists per-event and per-year pricing and directs larger or
+    custom needs to sales) and you generate the API key from within Experience
+    Manager. Because the key inherits the Organizer's access, the API is
+    positioned for customers and integration partners rather than anonymous
+    public developers. Developer support is at api@eventmobi.com.
+  endpointsModeled: |
+    The logical APIs in the companion apis.yml (Events, People, Sessions,
+    Companies, Groups) reflect the documented resource model. Confirmed request
+    patterns observed in the public documentation include GET and PATCH on the
+    events collection and nested resources such as /events/{event_id}/images/ and
+    /events/{event_id}/companies/. The complete per-resource verb/path matrix was
+    not machine-extractable because the developer reference is served from a
+    gated single-page portal (HTTP 403 to automated fetches), so the exact CRUD
+    surface for each resource is modeled from the documented resource structure
+    rather than transcribed endpoint-by-endpoint. No OpenAPI or Postman
+    collection was authored, to avoid fabricating an unverified endpoint surface.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://uapi.eventmobi.com
+      documented: true
+      note: Unified API (UAPI v3 and v4). API-key auth generated in Experience Manager; pagination max 1000/page.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: EventMobi documents webhook support - server-to-endpoint HTTP callbacks, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in EventMobi's public Unified API as of the review date.
+sources:
+  - url: https://developers.eventmobi.com/latest/
+    type: Documentation
+    note: Unified API landing/reference - API keys, pagination (max 1000/page), image upload via PUT, webhooks, v3/v4.
+  - url: https://developers.eventmobi.com/docs/uapi-public/YXBpOjI5Njc2MDM1-event-mobi-api
+    type: APIReference
+    note: UAPI-Public reference (gated SPA; returns 403 to automated fetch).
+  - url: https://help.eventmobi.com/en/knowledge/how-do-i-use-eventmobis-experience-manager
+    type: Documentation
+    note: Experience Manager - where API keys are generated and event data is managed.
+  - url: https://www.eventmobi.com/pricing/
+    type: Pricing
+    note: Per-event and per-year plans; custom/enterprise via sales. Establishes the paid access gate for API keys.
+  - url: https://github.com/EventMobi
+    type: SourceCode
+    note: GitHub org has no public SDK or OpenAPI spec (only an unrelated interview-assessment repo).
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists on EventMobi's own public API. The
+    documented surface is a request/response REST Unified API plus webhook
+    callbacks. No AsyncAPI document was created because there is no server-push
+    transport on EventMobi's own API to model.

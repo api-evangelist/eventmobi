@@ -1,0 +1,56 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: EventMobi
+providerId: eventmobi
+created: '2026-07-05'
+modified: '2026-07-05'
+reconciled: false
+tags:
+- Events
+- Event Management
+- Rate Limiting
+- Pagination
+- Quotas
+description: >-
+  EventMobi does not publish fixed numeric request-rate limits for the Unified
+  API. The one hard quota documented publicly is pagination: list endpoints
+  return a maximum of 1000 items per page unless otherwise stated, so large
+  collections must be paged. Access itself is bounded by the API key model - a
+  key is scoped to a single Organizer and inherits that Organizer's access
+  rights - rather than by a published per-minute quota. Per-account or
+  per-endpoint request ceilings, if enforced, are not documented as of the
+  review date.
+notes: >-
+  Confirm any per-minute or per-day request ceilings and the current maximum
+  page size directly with EventMobi (api@eventmobi.com) during reconciliation.
+  Clients should page results and implement retry/backoff defensively.
+sources:
+- https://developers.eventmobi.com/latest/
+- https://developers.eventmobi.com/docs/uapi-public/YXBpOjI5Njc2MDM1-event-mobi-api
+responseCodes:
+  throttled: 429
+limits:
+- name: Page Size
+  scope: request
+  metric: items
+  limit: 1000 per page (default maximum, unless otherwise stated)
+  notes: Documented pagination ceiling for list endpoints; use pagination to retrieve larger collections.
+- name: Unified API Requests
+  scope: account
+  metric: requests
+  limit: not published
+  notes: No fixed numeric request-rate limit is documented for the Unified API.
+- name: API Key Scope
+  scope: organizer
+  metric: access
+  limit: same rights as the generating Organizer
+  notes: Each key is tied to one Organizer and inherits that Organizer's access within the Organization.
+policies:
+- name: Pagination
+  description: List endpoints are paged with a maximum page size (1000 items unless otherwise stated) plus sorting support.
+- name: Backoff Strategy
+  description: Clients should implement retry with exponential backoff and jitter, and honor Retry-After if a 429 is returned.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
