@@ -111,6 +111,8 @@ apis:
     event; custom groups carry the "custom" type. Endpoints are nested under an
     event. Exact verb/path coverage is endpointsModeled.
 common:
+- type: DomainSecurity
+  url: security/eventmobi-domain-security.yml
 - type: GitHubOrganization
   url: https://github.com/EventMobi
 - type: LinkedIn
