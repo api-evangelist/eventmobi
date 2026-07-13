@@ -1,0 +1,14 @@
+{
+  "repo": "eventmobi",
+  "feeds": [
+    {
+      "source": "https://www.eventmobi.com/blog/",
+      "feed_url": "https://www.eventmobi.com/blog/feed/",
+      "title": "",
+      "saved": 1,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-07-11T11:50:51Z"
+}
