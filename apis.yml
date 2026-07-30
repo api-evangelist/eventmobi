@@ -13,7 +13,19 @@ description: >-
   account - API keys are generated inside Experience Manager and carry the same
   access rights as the Organizer they belong to - so the API is available to
   paying customers rather than through open self-service signup.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Paid
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/eventmobi.png
 tags:
 - Events
 - Event Management
