@@ -2,13 +2,20 @@
   "repo": "eventmobi",
   "feeds": [
     {
+      "source": "https://www.eventmobi.com/blog/feed/",
+      "feed_url": "https://www.eventmobi.com/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://www.eventmobi.com/blog/",
       "feed_url": "https://www.eventmobi.com/blog/feed/",
       "title": "",
-      "saved": 1,
+      "saved": 0,
       "method": "discovered"
     }
   ],
-  "post_count": 1,
-  "fetched": "2026-07-11T11:50:51Z"
+  "post_count": 13,
+  "fetched": "2026-08-01T15:49:00Z"
 }
