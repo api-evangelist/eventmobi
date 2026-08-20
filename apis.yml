@@ -27,6 +27,13 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/eventmobi.png
 tags:
+- Event
+- Event Management
+- Event Apps
+- Attendees
+- Sessions
+- Registration
+tags_raw:
 - Events
 - Event Management
 - Event Apps
@@ -40,6 +47,9 @@ apis:
 - aid: eventmobi:eventmobi-events-api
   name: EventMobi Events API
   tags:
+  - Event
+  - Experience Manager
+  tags_raw:
   - Events
   - Experience Manager
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
@@ -110,6 +120,9 @@ apis:
 - aid: eventmobi:eventmobi-groups-api
   name: EventMobi Groups API
   tags:
+  - Group
+  - Segmentation
+  tags_raw:
   - Groups
   - Segmentation
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
