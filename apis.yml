@@ -13,6 +13,17 @@ description: >-
   account - API keys are generated inside Experience Manager and carry the same
   access rights as the Organizer they belong to - so the API is available to
   paying customers rather than through open self-service signup.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: unknown
