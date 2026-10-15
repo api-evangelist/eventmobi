@@ -26,7 +26,7 @@
     app_slug: eventmobi
     beta: false
     builder: unknown (not in the directory record)
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: eventmobi-wordpress-own
   label: WordPress (own)
