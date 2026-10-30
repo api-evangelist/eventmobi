@@ -1,4 +1,4 @@
-# EventMobi (eventmobi)
+# EventMobi
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,89 +64,108 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-EventMobi is an event management platform for in-person, virtual, and hybrid events - event apps, registration and ticketing, event websites, badges and check-in, and live engagement - all configured through its **Experience Manager**. EventMobi exposes a documented public **Unified API (UAPI)** that lets organizers programmatically read and manage the data behind an event: events, people (attendees, speakers, and other participants), sessions, companies (sponsors and exhibitors), and groups.
+EventMobi is an event management platform for in-person, virtual, and hybrid events - event apps, registration and ticketing, event websites, badges and check-in, and live engagement - all configured through its Experience Manager. EventMobi exposes a documented public Unified API (UAPI) that lets organizers programmatically read and manage the data behind an event: events, people (attendees, speakers, and other participants), sessions, companies (sponsors and exhibitors), and groups. Access is gated by an EventMobi Organizer account - API keys are generated inside Experience Manager and carry the same access rights as the Organizer they belong to - so the API is available to paying customers rather than through open self-service signup.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/eventmobi/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/eventmobi/refs/heads/main/apis.yml)
+**Areas:** Event · Event Management · Event Apps · Attendees · Sessions · Registration
 
-## Access Model (Read This First)
+## EventMobi on APIs.io
 
-The EventMobi Unified API is **real and publicly documented, but access-gated** - it is not an open self-service developer API.
+Everything profiled for EventMobi is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/eventmobi/](https://apis.io/providers/eventmobi/)** — or go straight to one of the APIs or properties below.
 
-- **Base URL:** `https://uapi.eventmobi.com`
-- **Versions:** UAPI v3 and the current **UAPI v4**.
-- **Authentication:** API key. Each key is **generated inside Experience Manager**, is scoped to a single **Organizer**, and carries the **same access rights as that Organizer** within the Organization it was generated for.
-- **Getting access:** You need an EventMobi **Organizer account**, which requires a paid plan (EventMobi lists per-event and per-year pricing and routes larger or custom needs to sales). There is no anonymous API signup.
-- **Pagination:** List endpoints return a maximum of **1000 items per page** unless otherwise stated; sorting and filtering are supported.
-- **Other documented features:** image upload to a temporary URL via `PUT`, search/filtering, field visibility by authorization level, and webhooks (server-to-endpoint HTTP callbacks).
-- **Developer support:** `api@eventmobi.com`
+### APIs (5)
 
-### On endpointsModeled
+- [EventMobi Events API](https://apis.io/apis/eventmobi/eventmobi-events-api/) — Read and update the events an Organizer manages. Confirmed request patterns include GET and PATCH on the events collection and nested resources such as…
+- [EventMobi People API](https://apis.io/apis/eventmobi/eventmobi-people-api/) — Manage the people associated with an event - attendees, speakers, and other participants - including their profile fields and visibility, which are…
+- [EventMobi Sessions API](https://apis.io/apis/eventmobi/eventmobi-sessions-api/) — Manage an event's agenda sessions - scheduling, session roles, and the speakers and content attached to each session. Endpoints are nested under an event.…
+- [EventMobi Companies API](https://apis.io/apis/eventmobi/eventmobi-companies-api/) — Manage the companies shown in an event - sponsors, exhibitors, and vendors. Confirmed request pattern includes the nested collection…
+- [EventMobi Groups API](https://apis.io/apis/eventmobi/eventmobi-groups-api/) — Create and manage people groups used to categorize attendees within an event; custom groups carry the "custom" type. Endpoints are nested under an event.…
 
-The logical APIs below reflect EventMobi's documented resource model. Confirmed request patterns observed in the public docs include `GET`/`PATCH` on the events collection and nested resources such as `/events/{event_id}/images/` and `/events/{event_id}/companies/`. The full per-resource verb/path matrix was **not machine-extractable** because the developer reference is served from a gated single-page portal (HTTP 403 to automated fetches), so the exact CRUD surface per resource is **modeled** from the documented structure rather than transcribed endpoint by endpoint. No OpenAPI or Postman collection is included, to avoid fabricating an unverified endpoint surface.
+### Published properties
 
-## Tags
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Events
-- Event Management
-- Event Apps
-- Attendees
-- Sessions
-- Registration
+#### Security (1)
 
-## Timestamps
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Created:** 2026-07-05
-- **Modified:** 2026-07-05
+- [Eventmobi Domain Security](https://apis.io/security/eventmobi/eventmobi-domain-security/)
 
-## APIs
+#### Plans and pricing (1)
 
-### EventMobi Events API
+Published plans, tiers and prices.
 
-Read and update the events an Organizer manages. Confirmed request patterns include `GET` and `PATCH` on the events collection and nested resources such as `/events/{event_id}/images/`. Full CRUD coverage is endpointsModeled.
+- [Eventmobi Plans Pricing](https://apis.io/plans/eventmobi/eventmobi-plans-pricing/)
 
-- **Human URL:** [https://developers.eventmobi.com/latest/](https://developers.eventmobi.com/latest/)
-- **Base URL:** `https://uapi.eventmobi.com`
+#### Rate limits (1)
 
-### EventMobi People API
+Published request limits.
 
-Manage the people associated with an event - attendees, speakers, and other participants - including profile fields and visibility (controlled by authorization level). People are organized into groups. Endpoints are nested under an event. Verb/path coverage is endpointsModeled.
+- [Eventmobi Rate Limits](https://apis.io/rate-limits/eventmobi/eventmobi-rate-limits/)
 
-- **Human URL:** [https://developers.eventmobi.com/latest/](https://developers.eventmobi.com/latest/)
-- **Base URL:** `https://uapi.eventmobi.com`
+#### FinOps (1)
 
-### EventMobi Sessions API
+What the API costs to run, by operation.
 
-Manage an event's agenda sessions - scheduling, session roles, and the speakers and content attached to each session. Endpoints are nested under an event. Verb/path coverage is endpointsModeled.
+- [Eventmobi Finops](https://apis.io/finops/eventmobi/eventmobi-finops/)
 
-- **Human URL:** [https://developers.eventmobi.com/latest/](https://developers.eventmobi.com/latest/)
-- **Base URL:** `https://uapi.eventmobi.com`
+## Where to find this API
 
-### EventMobi Companies API
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-Manage the companies shown in an event - sponsors, exhibitors, and vendors. Confirmed request pattern includes the nested collection `/events/{event_id}/companies/`. Full verb/path coverage is endpointsModeled.
-
-- **Human URL:** [https://developers.eventmobi.com/latest/](https://developers.eventmobi.com/latest/)
-- **Base URL:** `https://uapi.eventmobi.com`
-
-### EventMobi Groups API
-
-Create and manage people groups used to categorize attendees within an event; custom groups carry the `custom` type. Endpoints are nested under an event. Verb/path coverage is endpointsModeled.
-
-- **Human URL:** [https://developers.eventmobi.com/latest/](https://developers.eventmobi.com/latest/)
-- **Base URL:** `https://uapi.eventmobi.com`
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/EventMobi)
-- [LinkedIn](https://www.linkedin.com/company/eventmobi)
 - [Website](https://www.eventmobi.com)
 - [Documentation](https://developers.eventmobi.com/latest/)
-- [Plans](plans/eventmobi-plans-pricing.yml)
-- [Rate Limits](rate-limits/eventmobi-rate-limits.yml)
-- [Fin Ops](finops/eventmobi-finops.yml)
 - [Blog](https://www.eventmobi.com/blog/)
+- [GitHub](https://github.com/EventMobi)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 12.5** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 0.0 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 19.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 0.6** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/eventmobi/](https://apis.io/providers/eventmobi/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for EventMobi: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/eventmobi/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
